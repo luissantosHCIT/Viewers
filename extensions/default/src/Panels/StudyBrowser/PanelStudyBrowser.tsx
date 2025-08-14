@@ -8,7 +8,7 @@ import { defaultActionIcons } from './constants';
 import MoreDropdownMenu from '../../Components/MoreDropdownMenu';
 import { CallbackCustomization } from 'platform/core/src/types';
 
-const { sortStudyInstances, formatDate, createStudyBrowserTabs } = utils;
+const { sortStudyInstances, formatDate, createStudyBrowserTabs, TabsProps } = utils;
 
 const thumbnailNoImageModalities = ['SR', 'SEG', 'RTSTRUCT', 'RTPLAN', 'RTDOSE', 'DOC', 'PMAP'];
 
@@ -530,7 +530,11 @@ function getImageIdForThumbnail(displaySet, imageIds) {
   return imageId;
 }
 
-function _findTabAndStudyOfDisplaySet(displaySetInstanceUID, tabs, currentTabName) {
+function _findTabAndStudyOfDisplaySet(
+  displaySetInstanceUID: string,
+  tabs: TabsProps,
+  currentTabName: string
+) {
   const biasedTabs = [_findCurrentTab(currentTabName, tabs), ...tabs];
 
   for (let t = 0; t < biasedTabs.length; t++) {
@@ -553,7 +557,7 @@ function _findTabAndStudyOfDisplaySet(displaySetInstanceUID, tabs, currentTabNam
   }
 }
 
-function _findCurrentTab(currentTabName, tabs) {
+function _findCurrentTab(currentTabName: string, tabs: TabsProps): TabsProps {
   for (const tab of tabs) {
     if (tab.name === currentTabName) {
       return tab;
