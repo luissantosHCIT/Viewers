@@ -8,7 +8,8 @@ import OHIFCornerstoneSRTextViewport from './OHIFCornerstoneSRTextViewport';
 function OHIFCornerstoneSRViewport(props: withAppTypes) {
   const { displaySets } = props;
   const { isImagingMeasurementReport } = displaySets[0];
-
+  console.log(isImagingMeasurementReport);
+  console.log(displaySets);
   if (isImagingMeasurementReport) {
     return <OHIFCornerstoneSRMeasurementViewport {...props}></OHIFCornerstoneSRMeasurementViewport>;
   }
